@@ -1,14 +1,14 @@
-export type RobotsStructure = {
+export type RobotModel = {
     id: string;
     name: string;
     imageUrl: string;
     speed: string;
-    toughness: string;
+    endurance: string;
     creationDate: string;
     creationUser: string;
 };
 
-export class Robot implements RobotsStructure {
+export class Robot implements RobotModel {
     static generateId() {
         const aNumbers = new Uint32Array(1);
         window.crypto?.getRandomValues(aNumbers);
@@ -20,7 +20,7 @@ export class Robot implements RobotsStructure {
         public name: string,
         public imageUrl: string,
         public speed: string,
-        public toughness: string,
+        public endurance: string,
         public creationDate: string,
         public creationUser: string
     ) {

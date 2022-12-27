@@ -1,19 +1,19 @@
 import { Repository } from "../types/repo";
-import { RobotsStructure } from "../types/robot";
+import { RobotModel } from "../features/models/robot.model";
 
 const invalidIdError = new Error('Invalid ID');
 
-export class RobotsRepo implements Repository<RobotsStructure> {
+export class RobotsRepo implements Repository<RobotModel> {
     constructor(private url = 'http://localhost:3300/robots/') {
     }
 
-    async load(): Promise<RobotsStructure[]> {
+    async load(): Promise<RobotModel[]> {
         const resp = await fetch(this.url);
         if (!resp.ok)
             throw new Error(`Error ${resp.status}: ${resp.statusText}`);
         return await resp.json();
     }
-    async queryId(id: string): Promise<RobotsStructure> {
+    async queryId(id: string): Promise<RobotModel> {
         if (!id || typeof id !== 'string')
             return Promise.reject(invalidIdError);
         const resp = await fetch(this.url + id);
@@ -22,7 +22,7 @@ export class RobotsRepo implements Repository<RobotsStructure> {
         return await resp.json();
     }
 
-    async create(payload: Partial<RobotsStructure>): Promise<RobotsStructure> {
+    async create(payload: Partial<RobotModel>): Promise<RobotModel> {
         const resp = await fetch(this.url, {
             method: 'POST',
             body: JSON.stringify(payload),
@@ -34,7 +34,7 @@ export class RobotsRepo implements Repository<RobotsStructure> {
             throw new Error(`Error ${resp.status}: ${resp.statusText}`);
         return await resp.json();
     }
-    async update(payload: Partial<RobotsStructure>): Promise<RobotsStructure> {
+    async update(payload: Partial<RobotModel>): Promise<RobotModel> {
         if (!payload.id) return Promise.reject(invalidIdError);
         const resp = await fetch(this.url + payload.id, {
             method: 'PATCH',
@@ -47,7 +47,7 @@ export class RobotsRepo implements Repository<RobotsStructure> {
             throw new Error(`Error ${resp.status}: ${resp.statusText}`);
         return await resp.json();
     }
-    async delete(id: RobotsStructure['id']): Promise<RobotsStructure['id']> {
+    async delete(id: RobotModel['id']): Promise<RobotModel['id']> {
         if (!id) return Promise.reject(invalidIdError);
         const resp = await fetch(this.url + id, {
             method: 'DELETE',
