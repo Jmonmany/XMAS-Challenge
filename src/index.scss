@@ -1,3 +1,171 @@
+$color-green: #183d22;
+$color-purple-white: #ebeaef;
+$color-light-green: #2ee483;
+$color-orange: #b49a5d;
+$color-black: #18110b;
+
 * {
     box-sizing: border-box;
+    font-family: 'Futura', sans-serif;
+    color: $color-green;
+    letter-spacing: 2px;
+    text-shadow: -1px 0 $color-orange, 0 1px $color-orange, 1px 0 $color-orange, 0 -1px $color-orange;
 }
+
+body,
+.root {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $color-black;
+}
+
+header {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.menu {
+    border-top: $color-orange solid 1px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 1rem;
+    button {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        height: 50px;
+        width: 50px;
+        background-image: url("../public/screw.png");
+        background-repeat: no-repeat;
+        background-size: 50px 50px;
+    }
+    ul {
+        display: flex;
+        list-style: none;
+        transition: all 1s ease;
+        animation: translating 1s linear;
+        li {
+            margin-inline: 2rem;
+        }
+
+        a {
+            border: none;
+            text-decoration: none;
+        }
+        a:hover {
+            color: $color-green;
+            border-bottom: #2ee483 solid 1px;
+            text-shadow: -1px 0 $color-light-green, 0 1px $color-light-green, 1px 0 $color-light-green, 0 -1px $color-light-green;
+        }
+    }
+
+}
+
+@keyframes translating {
+    from {
+        transform: translateX(80%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+    }
+
+.menu .gears {
+    display: inline-block;
+    animation: rotate-gears 0.5s linear infinite;
+    }
+  
+    @keyframes rotate-gears {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(45deg);
+    }
+    }
+  
+
+main {
+    margin: 0;
+    border-top: $color-orange solid 1px;
+    height: 60vh;
+    background-color: $color-black;
+    h2 {
+        margin: 0;
+    }
+}
+
+.home-container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("../public/robotic-heart.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    p {
+        margin-inline: 1rem;
+        position: absolute;
+    }
+}
+
+footer {
+    margin-inline: 1rem;
+    padding-block-start: 1rem;
+    display: flex;
+    height: 15vh;
+    justify-content: space-evenly;
+    align-items: center;
+    address {
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
