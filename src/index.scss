@@ -90,9 +90,8 @@ header {
     }
     }
   
-
 main {
-    margin: 0;
+    margin-inline: 1rem;
     border-top: $color-orange solid 1px;
     height: 60vh;
     background-color: $color-black;

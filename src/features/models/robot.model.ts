@@ -4,8 +4,9 @@ export type RobotModel = {
     imageUrl: string;
     speed: string;
     endurance: string;
-    creationDate: string;
+    creationDate: Date;
     creationUser: string;
+    isFavourite: boolean;
 };
 
 export class Robot implements RobotModel {
@@ -21,8 +22,9 @@ export class Robot implements RobotModel {
         public imageUrl: string,
         public speed: string,
         public endurance: string,
-        public creationDate: string,
-        public creationUser: string
+        public creationDate: Date,
+        public creationUser: string,
+        public isFavourite: false
     ) {
         this.id = Robot.generateId();
     }
