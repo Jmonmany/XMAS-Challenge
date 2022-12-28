@@ -30,6 +30,3 @@ export function Menu({ items }: { items: MenuItems }) {
         </nav>
     );
     }
-
-
-    
