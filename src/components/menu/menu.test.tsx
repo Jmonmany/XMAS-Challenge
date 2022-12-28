@@ -48,6 +48,6 @@ describe('Given Menu component', () => {
             expect(button[0]).not.toHaveClass('gears')
             userEvent.click(button[0]);
             expect(button[0]).toHaveClass('gears');
-          });
+            });
     });
 });

@@ -6,28 +6,28 @@ export function Menu({ items }: { items: MenuItems }) {
     const [loading, setLoading] = useState(false);
   
     useEffect(() => {
-      const timer = setTimeout(() => setLoading(false), 1000);
-      return () => clearTimeout(timer);
+        const timer = setTimeout(() => setLoading(false), 1000);
+        return () => clearTimeout(timer);
     }, [loading]);
 
     const [isOpen, setIsOpen] = useState(true);
 
-  const toggleMenu = () => {
+    const toggleMenu = () => {
     setIsOpen(!isOpen);
     setLoading(true)
-  };
+    };
   
     return (
-      <nav className="menu">
+        <nav className="menu">
         <button onClick={toggleMenu} className={loading ? "gears" : ''}></button>
         {isOpen && (<ul>
-          {items.map((item) => (
+            {items.map((item) => (
             <li key={item.label}>
-              <Link to={item.path}>{item.label}</Link>
+                <Link to={item.path}>{item.label}</Link>
             </li>
-          ))}
+            ))}
         </ul>)}
-      </nav>
+        </nav>
     );
-  }
+    }
   

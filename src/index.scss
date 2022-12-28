@@ -69,26 +69,26 @@ header {
 
 @keyframes translating {
     from {
-      transform: translateX(80%);
+        transform: translateX(80%);
     }
     to {
-      transform: translateX(0%);
+        transform: translateX(0%);
     }
-  }
+    }
 
 .menu .gears {
     display: inline-block;
     animation: rotate-gears 0.5s linear infinite;
-  }
+    }
   
-  @keyframes rotate-gears {
+    @keyframes rotate-gears {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      transform: rotate(45deg);
+        transform: rotate(45deg);
     }
-  }
+    }
   
 
 main {
