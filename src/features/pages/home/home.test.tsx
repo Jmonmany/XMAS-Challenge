@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router';
 import Home from './home';
-describe('Given Header component', () => {
+describe('Given Home component', () => {
     describe('When it has been render', () => {
         test('Then the title should be in the screen', () => {
             render(
@@ -9,10 +9,8 @@ describe('Given Header component', () => {
                     <Home></Home>
                 </Router>
             );
-            const elementHeader = screen.getByRole('heading', {
-                name: 'Home',
-            });
-            expect(elementHeader).toBeInTheDocument();
+            const div = screen.getByRole('main');
+            expect(div).toBeInTheDocument();
         });
     });
 });

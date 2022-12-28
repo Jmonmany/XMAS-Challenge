@@ -1,11 +1,7 @@
 # Isdi coders
 
 # College Week 12
-
-Netlify: 
-
-Sonar: 
-
+ 
 ## Robots
 
 You will have to create a frontend in React that allows the user to manage a list of **robots**.
@@ -54,4 +50,4 @@ Back to testing: make it pick up on sonar and try to get 100% coverage
 - Create a detail page for the robots.
     You can add to the model any information you can think of to display on this page.
 
-Deploy: 
+Deploy: https://jmonmany-xmas-challenge.netlify.app/
