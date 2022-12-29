@@ -1,8 +1,5 @@
-$color-green: #183d22;
-$color-purple-white: #ebeaef;
-$color-light-green: #2ee483;
-$color-orange: #b49a5d;
-$color-black: #18110b;
+@import './variables';
+@import './mixins.scss';
 
 * {
     box-sizing: border-box;
@@ -91,6 +88,8 @@ header {
     }
   
 main {
+    display: flex;
+    flex-direction: row;
     margin-inline: 1rem;
     border-top: $color-orange solid 1px;
     height: 60vh;
@@ -130,7 +129,10 @@ footer {
     }
 }
 
-
+input::placeholder {
+    color: #18110b;
+    text-shadow: none;
+}
 
 
 

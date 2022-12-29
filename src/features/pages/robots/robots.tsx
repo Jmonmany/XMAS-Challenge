@@ -1,8 +1,7 @@
 import { List } from "../../../components/list/list";
 
-export default function Robots () {
+export default function RobotsPage () {
     return <>
-        <h2>Roboter Generator</h2>
         <List></List>
     </>
 }

@@ -1,5 +1,5 @@
 import { RobotModel } from "../../features/models/robot.model";
-
+import "./robot.scss";
 export function Robot({
     item,
     handleUpdate,
@@ -21,13 +21,11 @@ export function Robot({
         handleFavourite(item);
     };
     return (
-        <li className="robot-item">
-            <button className="remove-btn" onClick={handleClick}>
-                <span className="material-symbols-outlined">cancel</span>
-            </button>
+        <li className="item">
+            <button className="item__delete material-symbols-outlined btn" onClick={handleClick}>cancel</button>
             <img src={item.imageUrl} alt={item.name}></img>
             <p>{item.name}</p>
-            <div className="robot-features">
+            <div className="item__features">
                 <p>
                     Speed: <span>{item.speed}</span>
                 </p>
@@ -41,27 +39,10 @@ export function Robot({
                     Creator: <span>{item.creationUser}</span>
                 </p>
             </div>
-            <div className="buttons-group">
-                <button onClick={handleUpdateClick}>
-                    <span className="material-symbols-outlined">
-                        edit_square
-                    </span>
-                </button>
-
-                <button>
-                    <span className="material-symbols-outlined">smart_toy</span>
-                </button>
-
-                <button onClick={handleFavouriteClick}>
-                    {item.isFavourite ? (
-                        <span className="material-symbols-outlined">
-                            heart_minus
-                        </span>
-                    ) : (
-                        <span className="material-symbols-outlined">
-                            heart_plus
-                        </span>
-                    )}
+            <div className="item__btn-group">
+                <button onClick={handleUpdateClick} className="material-symbols-outlined btn">edit</button>
+                <button onClick={handleFavouriteClick} className="material-symbols-outlined btn">
+                    {item.isFavourite ? 'heart_minus' : 'heart_plus'}
                 </button>
             </div>
         </li>

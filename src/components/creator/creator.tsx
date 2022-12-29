@@ -1,6 +1,6 @@
 import { SyntheticEvent, useState } from "react";
 import { Robot, RobotModel } from "../../features/models/robot.model";
-
+import "./creator.scss";
 export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }) {
     const initialFormData: Partial<RobotModel> = {
         name: '',
@@ -35,10 +35,10 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
     };
 
     return (
-        <section>
-            <h3>Add robot</h3>
-            <form className="create-robot" onSubmit={handleSubmit}>
-                <div>
+        <section className="creator">
+            <h3>Roboter Generator</h3>
+            <form className="creator__form" onSubmit={handleSubmit}>
+                <div className="creator__div">
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
@@ -50,31 +50,31 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                         required
                     />
                 </div>
-                <div>
+                <div className="creator__div">
                     <label htmlFor="speed">Speed</label>
                     <input
                         type="text"
                         name="speed"
                         id="speed"
-                        placeholder="Write a speed between 0-10"
+                        placeholder="between 0-10"
                         value={formData.speed}
                         onInput={handleInput}
                         required
                     />
                 </div>
-                <div>
+                <div className="creator__div">
                     <label htmlFor="endurance">endurance</label>
                     <input
                         type="text"
                         name="endurance"
                         id="endurance"
-                        placeholder="Write a endurance between 0-10"
+                        placeholder="between 0-10"
                         value={formData.endurance}
                         onInput={handleInput}
                         required
                     />
                 </div>
-                <div>
+                <div className="creator__div">
                     <label htmlFor="creationUser">creationUser</label>
                     <input
                         type="text"
@@ -87,7 +87,7 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                     />
                 </div>
                 <div>
-                    <button type="submit">HERE</button>
+                    <button type="submit" className="creator__btn">CREATE</button>
                 </div>
             </form>
         </section>

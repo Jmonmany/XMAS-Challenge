@@ -3,7 +3,7 @@ import { RobotModel } from "../../features/models/robot.model";
 import { RobotsRepo } from "../../services/repository";
 import { Creator } from "../creator/creator";
 import { Robot } from "../robot/robot";
-
+import "./list.scss";
 export function List() {
     const repo = new RobotsRepo();
     const initialState: Array<RobotModel> = [];
@@ -51,7 +51,7 @@ export function List() {
     return (
         <>
             <Creator handleAdd={handleAdd}></Creator>
-            <ul className="robots-list">
+            <ul className="robot-list">
                 {robots.map((item) => {
                     return (
                         <Robot
