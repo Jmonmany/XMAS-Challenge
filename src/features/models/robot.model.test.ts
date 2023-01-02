@@ -1,10 +1,10 @@
 import { ROBOT } from '../data/mock.robot';
-import { Robot } from './robot.model';
+import { RobotClass } from './robot.model';
 
 describe('Given "Robot" data model', () => {
     test('Then it should instantiate a ROBOT', () => {
         const mockRobot = ROBOT
-        expect(mockRobot).toBeInstanceOf(Robot);
+        expect(mockRobot).toBeInstanceOf(RobotClass);
         expect(mockRobot).toHaveProperty('name', ROBOT.name);
         expect(mockRobot).toHaveProperty('imageUrl', ROBOT.imageUrl);
         expect(mockRobot).toHaveProperty('speed', ROBOT.speed);

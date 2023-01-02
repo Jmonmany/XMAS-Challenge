@@ -1,8 +1,8 @@
-import { Robot } from '../features/models/robot.model';
+import { RobotClass } from '../features/models/robot.model';
 import { RobotsRepo } from './repository';
 describe('Given a Robot Repo', () => {
     const mockData = [
-        new Robot(
+        new RobotClass(
             'Test name 1',
             'Test url 1',
             'Test speed 1',
@@ -11,7 +11,7 @@ describe('Given a Robot Repo', () => {
             'Test creationUser 1',
             false
         ),
-        new Robot(
+        new RobotClass(
             'Test name 2',
             'Test url 2',
             'Test speed 2',
@@ -87,7 +87,7 @@ describe('Given a Robot Repo', () => {
     describe('When we use create method', () => {
         test(`Then if the data is VALID, we received the new Robot 
             created in the repo with its own new id`, async () => {
-            const mockNewTaskPayload: Partial<Robot> = {
+            const mockNewTaskPayload: Partial<RobotClass> = {
                 name: 'New Robot',
                 imageUrl: 'Test url',
             };
@@ -118,7 +118,7 @@ describe('Given a Robot Repo', () => {
     describe('When we use update method', () => {
         test(`Then if the ID is VALID, we received the Robot 
             updated in the repo`, async () => {
-            const updatePayload: Partial<Robot> = {
+            const updatePayload: Partial<RobotClass> = {
                 id: mockData[0].id,
                 name: 'Lisa',
             };
@@ -136,7 +136,7 @@ describe('Given a Robot Repo', () => {
             expect(global.fetch).not.toHaveBeenCalled();
         });
         test(`Then if the ID is NOT VALID, we received a null`, async () => {
-            const updatePayload: Partial<Robot> = {
+            const updatePayload: Partial<RobotClass> = {
                 id: 'bad',
                 name: 'Lisa',
             };

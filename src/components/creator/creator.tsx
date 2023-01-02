@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from "react";
-import { Robot, RobotModel } from "../../features/models/robot.model";
+import { RobotClass, RobotModel } from "../../features/models/robot.model";
 import "./creator.scss";
 export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }) {
     const initialFormData: Partial<RobotModel> = {
@@ -21,7 +21,7 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
         ev.preventDefault();
         formData.imageUrl = "https://robohash.org/" + formData.name + ".png";
         handleAdd(
-            new Robot(
+            new RobotClass(
                 formData.name as string,
                 formData.imageUrl ? formData.imageUrl : "",
                 formData.speed as string,
@@ -63,7 +63,7 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                     />
                 </div>
                 <div className="creator__div">
-                    <label htmlFor="endurance">endurance</label>
+                    <label htmlFor="endurance">Endurance</label>
                     <input
                         type="text"
                         name="endurance"
@@ -75,7 +75,7 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                     />
                 </div>
                 <div className="creator__div">
-                    <label htmlFor="creationUser">creationUser</label>
+                    <label htmlFor="creationUser">User</label>
                     <input
                         type="text"
                         name="creationUser"

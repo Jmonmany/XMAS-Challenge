@@ -9,7 +9,7 @@ export type RobotModel = {
     isFavourite: boolean;
 };
 
-export class Robot implements RobotModel {
+export class RobotClass implements RobotModel {
     static generateId() {
         const aNumbers = new Uint32Array(1);
         window.crypto?.getRandomValues(aNumbers);
@@ -26,6 +26,6 @@ export class Robot implements RobotModel {
         public creationUser: string,
         public isFavourite: false
     ) {
-        this.id = Robot.generateId();
+        this.id = RobotClass.generateId();
     }
 }
