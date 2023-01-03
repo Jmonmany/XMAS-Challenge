@@ -1,20 +1,31 @@
 {
-    "robots": [],
-    "posts": [
-        {
-        "id": 1,
-        "title": "json-server",
-        "author": "typicode"
-        }
-    ],
-    "comments": [
-        {
-        "id": 1,
-        "body": "some comment",
-        "postId": 1
-        }
-    ],
-    "profile": {
-        "name": "typicode"
+  "robots": [
+    {
+      "name": "dada",
+      "imageUrl": "https://robohash.org/dada.png",
+      "speed": "2",
+      "endurance": "2",
+      "creationUser": "dada",
+      "id": "902845",
+      "isFavourite": false,
+      "creationDate": "3/1/2023, 18:00:28"
     }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
