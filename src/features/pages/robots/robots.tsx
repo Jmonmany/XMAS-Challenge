@@ -1,5 +1,7 @@
-export default function Robots () {
+import { List } from "../../../components/list/list";
+
+export default function RobotsPage () {
     return <>
-        <h2>Roboter</h2>
+        <List></List>
     </>
 }
