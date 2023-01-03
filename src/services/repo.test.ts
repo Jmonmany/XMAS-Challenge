@@ -6,19 +6,15 @@ describe('Given a Robot Repo', () => {
             'Test name 1',
             'Test url 1',
             'Test speed 1',
-            'Test toughness 1',
-            new Date(),
+            'Test endurance 1',
             'Test creationUser 1',
-            false
         ),
         new RobotClass(
             'Test name 2',
             'Test url 2',
             'Test speed 2',
-            'Test toughness 2',
-            new Date,
+            'Test endurance 2',
             'Test creationUser 2',
-            false
         ),
     ];
     const repo = new RobotsRepo();

@@ -26,9 +26,7 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                 formData.imageUrl,
                 formData.speed as string,
                 formData.endurance as string,
-                new Date(),
                 formData.creationUser as string,
-                false
             )
         );
         setFormData(initialFormData);
@@ -53,7 +51,9 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                 <div className="creator__div">
                     <label htmlFor="speed">Speed</label>
                     <input
-                        type="text"
+                        type="number"
+                        min="0"
+                        max="10"
                         name="speed"
                         id="speed"
                         placeholder="between 0-10"
@@ -65,7 +65,9 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
                 <div className="creator__div">
                     <label htmlFor="endurance">Endurance</label>
                     <input
-                        type="text"
+                        type="number"
+                        min="0"
+                        max="10"
                         name="endurance"
                         id="endurance"
                         placeholder="between 0-10"

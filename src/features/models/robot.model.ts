@@ -4,7 +4,7 @@ export type RobotModel = {
     imageUrl: string;
     speed: string;
     endurance: string;
-    creationDate: Date;
+    creationDate: string;
     creationUser: string;
     isFavourite: boolean;
 };
@@ -15,17 +15,23 @@ export class RobotClass implements RobotModel {
         window.crypto?.getRandomValues(aNumbers);
         return ('000000' + aNumbers[0]).slice(-6);
     }
+    static generateDate() {
+        const currentDate = new Date();
+        return currentDate.toLocaleString();
+    }
     id: string;
+    isFavourite: boolean;
+    creationDate: string;
 
     constructor(
         public name: string,
         public imageUrl: string,
         public speed: string,
         public endurance: string,
-        public creationDate: Date,
         public creationUser: string,
-        public isFavourite: false
     ) {
         this.id = RobotClass.generateId();
+        this.isFavourite = false;
+        this.creationDate = RobotClass.generateDate();
     }
 }

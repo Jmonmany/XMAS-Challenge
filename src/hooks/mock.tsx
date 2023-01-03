@@ -6,7 +6,7 @@ mockRobot1.id = '000001';
 export const mockRobot2 = ROBOT2
 mockRobot2.id = '000002';
 export const mockRobots = [mockRobot1, mockRobot2];
-export const mockAddRobot = new RobotClass('Added Robot', 'https', '10', '10', new Date(), 'GOD', false);
+export const mockAddRobot = new RobotClass('Added Robot', 'https', '10', '10', 'GOD');
 mockAddRobot.id = '000003';
 export const mockUpdateRobot = { ...mockRobot2, title: 'Update Robot' };
 
