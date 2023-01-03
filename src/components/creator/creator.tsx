@@ -23,7 +23,7 @@ export function Creator({ handleAdd }: { handleAdd: (item: RobotModel) => void }
         handleAdd(
             new RobotClass(
                 formData.name as string,
-                formData.imageUrl ? formData.imageUrl : "",
+                formData.imageUrl,
                 formData.speed as string,
                 formData.endurance as string,
                 new Date(),

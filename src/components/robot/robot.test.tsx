@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-conditional-expect */
 import { render, screen } from "@testing-library/react";
 import { RobotClass } from "../../features/models/robot.model";
 import userEvent from "@testing-library/user-event";
@@ -61,15 +62,26 @@ describe("Given Robot component", () => {
             const btnUpdate = screen.getByRole("button", {
                 name: "edit",
             });
-            const btnFavouriteTrue = screen.getByRole("button", {
-                name: "heart_plus",
-            });
             userEvent.click(btnDelete);
             userEvent.click(btnUpdate);
-            userEvent.click(btnFavouriteTrue);
             expect(handleUpdate).toHaveBeenCalledTimes(1);
             expect(handleDelete).toHaveBeenCalledTimes(1);
-            expect(handleFavourite).toHaveBeenCalledTimes(1);
+
+            if (mockRobot.isFavourite) {
+                const btnRemoveFavourite = screen.getByRole("button", {
+                    name: "heart_minus",
+                });
+                expect(btnRemoveFavourite).toBeInTheDocument();
+                userEvent.click(btnRemoveFavourite);
+                expect(handleFavourite).toHaveBeenCalledTimes(1);
+            } else {
+                const btnAddFavourite = screen.getByRole("button", {
+                    name: "heart_plus",
+                });
+                expect(btnAddFavourite).toBeInTheDocument();
+                userEvent.click(btnAddFavourite);
+                expect(handleFavourite).toHaveBeenCalledTimes(1);
+            }
         });
     });
 });
