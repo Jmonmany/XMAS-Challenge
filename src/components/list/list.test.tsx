@@ -5,6 +5,7 @@ import { useRobots } from '../../hooks/use.robots';
 import { RobotClass } from '../../features/models/robot.model';
 
 jest.mock('../../hooks/use.robots');
+
 const mockRobotName = "Test name";
     const mockImage = "Test image";
     const mockSpeed = "Test speed";

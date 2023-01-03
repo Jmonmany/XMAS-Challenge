@@ -1,15 +1,6 @@
 {
   "robots": [
-    {
-      "name": "dada",
-      "imageUrl": "https://robohash.org/dada.png",
-      "speed": "2",
-      "endurance": "2",
-      "creationUser": "dada",
-      "id": "902845",
-      "isFavourite": false,
-      "creationDate": "3/1/2023, 18:00:28"
-    }
+    
   ],
   "posts": [
     {
