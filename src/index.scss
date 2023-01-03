@@ -3,7 +3,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Futura', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: $color-green;
     letter-spacing: 2px;
     text-shadow: -1px 0 $color-orange, 0 1px $color-orange, 1px 0 $color-orange, 0 -1px $color-orange;
@@ -100,7 +100,12 @@ main {
 }
 
 .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     background-image: url("../public/robotic-heart.png");
@@ -108,7 +113,17 @@ main {
     background-position: center;
     p {
         margin-inline: 1rem;
-        position: absolute;
+        margin-block: 0.5rem;
+    }
+    a {
+        padding: 0.3rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    a:hover {
+        border: 1px solid $color-orange;
+        border-radius: 2rem;
+        color: $color-light-green;
     }
 }
 
