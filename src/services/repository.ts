@@ -4,7 +4,7 @@ import { RobotModel } from "../features/models/robot.model";
 const invalidIdError = new Error('Invalid ID');
 
 export class RobotsRepo implements Repository<RobotModel> {
-    constructor(private url = 'http://localhost:3300/robots/') {
+    constructor(private url = 'http://localhost:3000/robots/') {
     }
 
     async load(): Promise<RobotModel[]> {

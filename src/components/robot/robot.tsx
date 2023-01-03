@@ -33,7 +33,7 @@ export function Robot({
                     Endurance: <span>{item.endurance}</span>
                 </p>
                 <p>
-                    Creation date: <span>{item.creationDate.toDateString()}</span>
+                    Creation date: <span>{item.creationDate}</span>
                 </p>
                 <p>
                     Creator: <span>{item.creationUser}</span>

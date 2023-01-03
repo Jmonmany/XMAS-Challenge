@@ -9,16 +9,13 @@ const mockRobotName = "Test name";
     const mockImage = "Test image";
     const mockSpeed = "Test speed";
     const mockEndurance = "Test endurance";
-    const mockDate = new Date()
     const mockCreator = "Test creator name";
     const mockRobot = new RobotClass(
         mockRobotName,
         mockImage,
         mockSpeed,
         mockEndurance,
-        mockDate,
         mockCreator,
-        false
     );
 describe('Given "List" component', () => {
     beforeEach(() => {
