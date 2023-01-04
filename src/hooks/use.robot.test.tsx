@@ -53,7 +53,6 @@ describe(`Given useRobots (custom hook)
                                 ))}
                             </ul>
                         </div>
-                    
                 </>
             );
         };

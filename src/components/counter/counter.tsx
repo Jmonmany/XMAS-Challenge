@@ -1,10 +1,22 @@
+import React, { useEffect } from "react";
+import { useRobots } from "../../hooks/use.robots";
+
 export function Counter() {
     
-    const robotsNumber = 0
+    const { robots, handleLoad } =
+        useRobots();
+
+    useEffect(() => {
+        handleLoad();
+    }, [handleLoad]);
+
+    const RobotNumber = React.createContext(robots)
 
     return (
         <>
-            <p>{robotsNumber} Robots available</p>
+            <RobotNumber.Provider value={robots}>
+                <p>{robots.length} Robots available</p>
+            </RobotNumber.Provider>
         </>
     );
 }
