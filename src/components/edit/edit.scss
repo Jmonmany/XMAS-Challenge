@@ -1,31 +1,31 @@
 @import '../../variables.scss';
 @import '../../mixins.scss';
 
-.creator{
-    position: fixed;
-    left: 15%;
-    max-width: 100vw;
-    background-color: $color-black;
+.modal{
+    position: relative;
+    background-color: black;
     border: solid 1px $color-orange;
     border-radius: 1rem;
     margin-block-start: 1rem;
+    color: red;
     input {
         min-width: 8rem;
+        color: $color-green;
     }
     *{
+        text-shadow: none;
         margin: 0.25rem;
         font-size: 0.75rem;
     }
-    h3 {
-        text-align: center;
+    label {
+        color: $color-light-green;
     }
     &__form {
         display: flex;
         justify-content: space-evenly;
-        
     }
-    &__btn {
-        @include btnTheme();
+    button {
+        color: $color-black;
         margin-top: 1.25rem;
     }
     &__btn:hover{
