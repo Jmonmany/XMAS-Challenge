@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { RobotsRepo } from '../services/repository';
 import { RobotModel } from '../features/models/robot.model'
 
@@ -16,13 +16,8 @@ export function useRobots(): UseRobots {
     const initialState: Array<RobotModel> = [];
     const [robots, setRobots] = useState(initialState);
 
-    useEffect(() => {
-        sessionStorage.setItem('totalRobots', JSON.stringify(robots.length));
-    }, [robots]);
-
     const handleLoad = useCallback(async () => {
         const robotList = await repo.load();
-        
         setRobots(robotList);
     }, [repo]);
 
