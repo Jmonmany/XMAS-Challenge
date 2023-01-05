@@ -19,14 +19,17 @@ export function Robot({
     const handleClick = () => {
         handleDelete(item.id);
     };
-    const handleUpdateClick = () => {
-        handleUpdate(item);
+    const handleRobotUpdated = (formData : Partial<RobotModel>) => {
+        handleClose();
+        setUpdatedItem({...updatedItem,...formData});
     };
+
     const handleFavouriteClick = () => {
         handleFavourite(item);
     };
     
     const [show, setShow] = useState(false);
+    const [updatedItem, setUpdatedItem] = useState(item);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
@@ -34,32 +37,32 @@ export function Robot({
         <>
             <li className="item">
                 <button className="item__delete material-symbols-outlined btn" onClick={handleClick}>cancel</button>
-                <img src={item.imageUrl} alt={item.name}></img>
-                <p>{item.name}</p>
+                <img src={updatedItem.imageUrl} alt={updatedItem.name}></img>
+                <p>{updatedItem.name}</p>
                 <div className="item__features">
                     <p>
-                        Speed: <span>{item.speed}</span>
+                        Speed: <span>{updatedItem.speed}</span>
                     </p>
                     <p>
-                        Endurance: <span>{item.endurance}</span>
+                        Endurance: <span>{updatedItem.endurance}</span>
                     </p>
                     <p>
-                        Creation date: <span>{item.creationDate}</span>
+                        Creation date: <span>{updatedItem.creationDate}</span>
                     </p>
                     <p>
-                        Creator: <span>{item.creationUser}</span>
+                        Creator: <span>{updatedItem.creationUser}</span>
                     </p>
                 </div>
                 <div className="item__btn-group">
                     <button onClick={handleShow} className="material-symbols-outlined btn">edit</button>
                     <button onClick={handleFavouriteClick} className="material-symbols-outlined btn">
-                        {item.isFavourite ? 'heart_minus' : 'heart_plus'}
+                        {updatedItem.isFavourite ? 'heart_minus' : 'heart_plus'}
                     </button>
                 </div>
             </li>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
-                    <Edit robot={item}></Edit>
+                    <Edit robot={updatedItem} onRobotUpdated={handleRobotUpdated}></Edit>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose}>

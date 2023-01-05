@@ -2,7 +2,7 @@ import { SyntheticEvent, useState } from "react";
 import { RobotModel } from "../../features/models/robot.model";
 import { useRobots } from "../../hooks/use.robots";
 import "./edit.scss";
-export function Edit({robot}: {robot: RobotModel}) {
+export function Edit({robot, onRobotUpdated}: {robot: RobotModel, onRobotUpdated: (robot : Partial<RobotModel> ) => void}) {
     const initialFormData: Partial<RobotModel> = {
         id: robot.id,
         name: robot.name,
@@ -22,14 +22,10 @@ export function Edit({robot}: {robot: RobotModel}) {
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault()
-        handleUpdate(formData)
+        handleUpdate(formData).then(() => onRobotUpdated(formData));
     };
     
     
-    
-
-    
-
     return (
         <section className="modal">
             <form className="modal__form" onSubmit={handleSubmit}>

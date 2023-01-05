@@ -33,6 +33,10 @@ export function useRobots(): UseRobots {
             )
         );
         await repo.update(robot);
+
+        /**  return could be used for knowing that the robot was updated or not.
+        return await repo.update(robot);
+        */
     };
 
     const handleDelete = async (id: RobotModel['id']) => {
