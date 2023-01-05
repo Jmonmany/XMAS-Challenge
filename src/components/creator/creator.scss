@@ -26,7 +26,6 @@
     }
     &__btn {
         @include btnTheme();
-        margin-top: 1.25rem;
     }
     &__btn:hover{
         @include btnHover()

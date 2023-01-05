@@ -27,8 +27,8 @@ export function Robot({
     };
     
     const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true)
-    const handleClose = () =>setShow(false)
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
     return (
         <>
@@ -58,13 +58,8 @@ export function Robot({
                 </div>
             </li>
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header>
-                    <Modal.Title>
-                        Editing your robot
-                    </Modal.Title>
-                </Modal.Header>
                 <Modal.Body>
-                    <Edit></Edit>
+                    <Edit robot={item}></Edit>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose}>

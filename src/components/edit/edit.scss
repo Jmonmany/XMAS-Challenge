@@ -17,6 +17,9 @@
         margin: 0.25rem;
         font-size: 0.75rem;
     }
+    h3 {
+        text-align: center;
+    }
     label {
         color: $color-light-green;
     }
@@ -26,7 +29,6 @@
     }
     button {
         color: $color-black;
-        margin-top: 1.25rem;
     }
     &__btn:hover{
         @include btnHover()
