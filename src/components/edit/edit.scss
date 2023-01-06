@@ -1,13 +1,12 @@
 @import '../../variables.scss';
 @import '../../mixins.scss';
 
-.modal{
-    position: relative;
-    background-color: black;
+.edit{
     border: solid 1px $color-orange;
     border-radius: 1rem;
-    margin-block-start: 1rem;
-    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     input {
         min-width: 8rem;
         color: $color-green;
@@ -16,6 +15,7 @@
         text-shadow: none;
         margin: 0.25rem;
         font-size: 0.75rem;
+        align-self: center;
     }
     h3 {
         text-align: center;
@@ -26,8 +26,10 @@
     &__form {
         display: flex;
         justify-content: space-evenly;
+        margin: 0;
     }
-    button {
+    &__btn {
+        margin-block-end: 1rem;
         color: $color-black;
     }
     &__btn:hover{

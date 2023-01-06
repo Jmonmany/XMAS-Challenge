@@ -19,7 +19,6 @@ describe("Given Robot component", () => {
         mockEndurance,
         mockCreator,
     );
-    const handleUpdate = jest.fn();
     const handleDelete = jest.fn();
     const handleFavourite = jest.fn();
     const handleShow = jest.fn();
@@ -30,7 +29,6 @@ describe("Given Robot component", () => {
             render(
                 <Robot
                     item={mockRobot}
-                    handleUpdate={handleUpdate}
                     handleDelete={handleDelete}
                     handleFavourite={handleFavourite}
                 ></Robot>
@@ -38,21 +36,20 @@ describe("Given Robot component", () => {
             const btnDelete = screen.getByRole("button", {
                 name: "cancel",
             });
-            const btnUpdate = screen.getByRole("button", {
+            const btnShow = screen.getByRole("button", {
                 name: "edit",
             });
             const btnFavouriteTrue = screen.getByRole("button", {
                 name: "heart_plus",
             });
             expect(btnDelete).toBeInTheDocument();
-            expect(btnUpdate).toBeInTheDocument();
+            expect(btnShow).toBeInTheDocument();
             expect(btnFavouriteTrue).toBeInTheDocument();
         });
         test("Then functions should be called", () => {
             render(
                 <Robot
                     item={mockRobot}
-                    handleUpdate={handleUpdate}
                     handleDelete={handleDelete}
                     handleFavourite={handleFavourite}
                 ></Robot>
@@ -60,12 +57,11 @@ describe("Given Robot component", () => {
             const btnDelete = screen.getByRole("button", {
                 name: "cancel",
             });
-            const btnUpdate = screen.getByRole("button", {
+            const btnShow = screen.getByRole("button", {
                 name: "edit",
             });
             userEvent.click(btnDelete);
-            userEvent.click(btnUpdate);
-            expect(handleUpdate).toHaveBeenCalledTimes(1);
+            userEvent.click(btnShow);
             expect(handleDelete).toHaveBeenCalledTimes(1);
 
             if (mockRobot.isFavourite) {
@@ -89,7 +85,6 @@ describe("Given Robot component", () => {
                 render(
                     <Robot
                         item={mockRobot}
-                        handleUpdate={handleUpdate}
                         handleDelete={handleDelete}
                         handleFavourite={handleFavourite}
                     ></Robot>
@@ -98,20 +93,30 @@ describe("Given Robot component", () => {
                     name: "edit",
                 })
                 userEvent.click(modalShowbtn);
-                expect(handleShow).toHaveBeenCalled();
                 // Assert that the modal is visible
                 const modalClosebtn = screen.getByRole("button", {
                     name: "Close",
                 })
                 expect(modalClosebtn).toBeVisible();
-                userEvent.click(modalClosebtn);
-                expect(handleShow).toHaveBeenCalled();
-
-                // // Wait for the modal to be removed from the DOM
-                // waitForElementToBeRemoved(() => modal);
-
-                // // Assert that the modal is no longer visible
-                // expect(modal).not.toBeInTheDocument();    
+    
+            })
+            test("Then Close button should close the Model", () => {
+                render(
+                    <Robot
+                        item={mockRobot}
+                        handleDelete={handleDelete}
+                        handleFavourite={handleFavourite}
+                    ></Robot>
+                );
+                const modalShowbtn = screen.getByRole("button", {
+                    name: "edit",
+                })
+                userEvent.click(modalShowbtn);
+                const modalClosebtn = screen.getByRole("button", {
+                    name: "Close",
+                })
+                userEvent.click(modalClosebtn); 
+                expect(modalClosebtn).not.toBeInTheDocument();    
             })
         });
     });

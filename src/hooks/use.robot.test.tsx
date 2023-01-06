@@ -5,8 +5,7 @@ import {
     mockRobot2,
     mockAddRobot,
     mockUpdateRobot,
-    mockValidRepoResponse,
-    // mockNoValidRepoResponse,
+    mockValidRepoResponse
 } from './mock';
 
 import { RobotsRepo } from '../services/repository';
@@ -111,3 +110,4 @@ describe(`Given useRobots (custom hook)
         });
     });
 });
+

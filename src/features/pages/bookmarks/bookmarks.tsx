@@ -3,7 +3,7 @@ import { Robot } from "../../../components/robot/robot";
 import { useRobots } from "../../../hooks/use.robots";
 
 export default function Bookmarks () {
-    const { robots, handleLoad, handleDelete, handleUpdate, handleFavourite } =
+    const { robots, handleLoad, handleDelete, handleFavourite } =
         useRobots();
 
     useEffect(() => {
@@ -21,7 +21,6 @@ export default function Bookmarks () {
                     <Robot
                         key={item.id}
                         item={item}
-                        handleUpdate={handleUpdate}
                         handleDelete={handleDelete}
                         handleFavourite={handleFavourite}
                     ></Robot>

@@ -27,9 +27,9 @@ export function Edit({robot, onRobotUpdated}: {robot: RobotModel, onRobotUpdated
     
     
     return (
-        <section className="modal">
-            <form className="modal__form" onSubmit={handleSubmit}>
-                <div className="modal__div">
+        <section className="edit">
+            <form className="edit__form" onSubmit={handleSubmit}>
+                <div className="edit__div">
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
@@ -82,7 +82,7 @@ export function Edit({robot, onRobotUpdated}: {robot: RobotModel, onRobotUpdated
                     />
                 </div>
                 <div>
-                    <button type="submit" className="modal__btn">Edit</button>
+                    <button type="submit" className="edit__btn">Edit</button>
                 </div>
             </form>
         </section>

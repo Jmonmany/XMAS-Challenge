@@ -2,17 +2,13 @@ import { RobotModel } from "../../features/models/robot.model";
 import { Edit } from "../edit/edit";
 import "./robot.scss";
 import { useState } from "react";
-import Modal from "react-bootstrap/esm/Modal";
-import Button from "react-bootstrap/esm/Button";
 
 export function Robot({
     item,
-    handleUpdate,
     handleDelete,
     handleFavourite,
 }: {
     item: RobotModel;
-    handleUpdate: (robot: Partial<RobotModel>) => void;
     handleDelete: (id: RobotModel["id"]) => void;
     handleFavourite: (robot: Partial<RobotModel>) => void;
 }) {
@@ -60,16 +56,13 @@ export function Robot({
                     </button>
                 </div>
             </li>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Body>
+            {show ? 
+                <div className="modal">
+                    <h3>Editing your Robot</h3>
                     <Edit robot={updatedItem} onRobotUpdated={handleRobotUpdated}></Edit>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                    <button onClick={handleClose} >Close</button>
+                </div> : ''
+            }
         </>
     );
 }

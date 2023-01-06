@@ -9,6 +9,7 @@ export const mockRobots = [mockRobot1, mockRobot2];
 export const mockAddRobot = new RobotClass('Added Robot', 'https', '10', '10', 'GOD');
 mockAddRobot.id = '000003';
 export const mockUpdateRobot = { ...mockRobot2, title: 'Update Robot' };
+export const mockFavouriteRobot = { ...mockRobot2};
 
 export const mockValidRepoResponse = () => {
     (RobotsRepo.prototype.load as jest.Mock).mockResolvedValue(mockRobots);
@@ -17,3 +18,10 @@ export const mockValidRepoResponse = () => {
     (RobotsRepo.prototype.delete as jest.Mock).mockResolvedValue(mockRobot1.id);
 };
 
+const error = new Error('Testing errors');
+export const mockNoValidRepoResponse = () => {
+    (RobotsRepo.prototype.load as jest.Mock).mockRejectedValue(error);
+    (RobotsRepo.prototype.create as jest.Mock).mockRejectedValue(error);
+    (RobotsRepo.prototype.update as jest.Mock).mockRejectedValue(error);
+    (RobotsRepo.prototype.delete as jest.Mock).mockRejectedValue(error);
+};

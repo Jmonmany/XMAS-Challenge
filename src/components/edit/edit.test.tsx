@@ -7,6 +7,10 @@ import { ROBOT } from '../../features/data/mock.robot';
 describe('Given Robot component', () => {
     const onRobotUpdated = jest.fn()
     const robot = ROBOT
+    const mockRobotName = "Test name";
+    const mockSpeed = "5";
+    const mockEndurance = "10";
+    const mockCreator = "Test creator name";
     beforeEach(() => {
         render(<Edit onRobotUpdated={onRobotUpdated} robot={robot}></Edit>);
     });
@@ -24,9 +28,11 @@ describe('Given Robot component', () => {
         beforeEach(() => {
             inputElementsTxt = screen.getAllByRole("textbox");
             inputElementsNum = screen.getAllByRole("spinbutton")
-            elementButton = screen.getByRole("button");
+            elementButton = screen.getByRole("button", {
+                name: "Edit",
+            });
         });
-        test("Then form could be used for type content", () => {
+        test("Then form should have previous content", () => {
             expect(inputElementsTxt[0]).toBeInTheDocument();
             expect(inputElementsTxt[1]).toBeInTheDocument();
             expect(inputElementsNum[0]).toBeInTheDocument();
@@ -36,9 +42,20 @@ describe('Given Robot component', () => {
             waitFor(() => expect(inputElementsNum[0]).toHaveValue("10"));
             waitFor(() => expect(inputElementsNum[1]).toHaveValue("0"));
         });
-        // test("Then form could be used for send the function received in props", () => {
-        //     userEvent.click(elementButton);
-        //     expect(onRobotUpdated).toHaveBeenCalled();
-        // });
+        test("Then form should be used to type content", () => {
+            userEvent.type(inputElementsTxt[0], mockRobotName);
+            userEvent.type(inputElementsTxt[1], mockCreator);
+            userEvent.type(inputElementsNum[0], mockSpeed);
+            userEvent.type(inputElementsNum[1], mockEndurance);
+            expect(inputElementsTxt[0]).toHaveValue(robot.name+mockRobotName);
+            expect(inputElementsTxt[1]).toHaveValue(robot.creationUser+mockCreator);
+            waitFor(() => expect(inputElementsNum[0]).toHaveValue("5"));
+            waitFor(() => expect(inputElementsNum[1]).toHaveValue("10"));
+        });
+        test("Then form could be used for send the function received in props", () => {
+            expect(elementButton).toBeInTheDocument()
+            userEvent.click(elementButton)
+            waitFor(() => expect(onRobotUpdated).toHaveBeenCalled());
+        });
     });
 })
