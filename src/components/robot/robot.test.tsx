@@ -1,5 +1,6 @@
+/* eslint-disable testing-library/await-async-utils */
 /* eslint-disable jest/no-conditional-expect */
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
 import { RobotClass } from "../../features/models/robot.model";
 import userEvent from "@testing-library/user-event";
 import { Robot } from "./robot";
@@ -21,6 +22,9 @@ describe("Given Robot component", () => {
     const handleUpdate = jest.fn();
     const handleDelete = jest.fn();
     const handleFavourite = jest.fn();
+    const handleShow = jest.fn();
+    const handleClose = jest.fn();
+    
     describe("When it has been render", () => {
         test("Then buttons should be in the screen", () => {
             render(
@@ -79,6 +83,36 @@ describe("Given Robot component", () => {
                 userEvent.click(btnAddFavourite);
                 expect(handleFavourite).toHaveBeenCalledTimes(1);
             }
+        })
+        describe("Given Modal component", () => {
+            test("Then buttons should be in the screen", () => {
+                render(
+                    <Robot
+                        item={mockRobot}
+                        handleUpdate={handleUpdate}
+                        handleDelete={handleDelete}
+                        handleFavourite={handleFavourite}
+                    ></Robot>
+                );
+                const modalShowbtn = screen.getByRole("button", {
+                    name: "edit",
+                })
+                userEvent.click(modalShowbtn);
+                expect(handleShow).toHaveBeenCalled();
+                // Assert that the modal is visible
+                const modalClosebtn = screen.getByRole("button", {
+                    name: "Close",
+                })
+                expect(modalClosebtn).toBeVisible();
+                userEvent.click(modalClosebtn);
+                expect(handleShow).toHaveBeenCalled();
+
+                // // Wait for the modal to be removed from the DOM
+                // waitForElementToBeRemoved(() => modal);
+
+                // // Assert that the modal is no longer visible
+                // expect(modal).not.toBeInTheDocument();    
+            })
         });
     });
 });
