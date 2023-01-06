@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/await-async-utils */
 /* eslint-disable jest/no-conditional-expect */
-import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { RobotClass } from "../../features/models/robot.model";
 import userEvent from "@testing-library/user-event";
 import { Robot } from "./robot";
@@ -21,9 +21,6 @@ describe("Given Robot component", () => {
     );
     const handleDelete = jest.fn();
     const handleFavourite = jest.fn();
-    const handleShow = jest.fn();
-    const handleClose = jest.fn();
-    
     describe("When it has been render", () => {
         test("Then buttons should be in the screen", () => {
             render(
