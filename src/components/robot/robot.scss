@@ -57,3 +57,24 @@
         }
     }
 }
+
+.modal {
+    position: absolute;
+    background-color: black;
+    border: solid 1px $color-orange;
+    border-radius: 1rem;
+    padding: 1rem;
+    *{
+        text-shadow: none;
+        font-size: 0.75rem;
+    }
+    h3 {
+        color: $color-light-green;
+    }
+    button {
+        margin-block-start: 1rem;
+    }
+    button:hover{
+        @include btnHover()
+    }
+}

@@ -4,7 +4,7 @@ import { Creator } from "../creator/creator";
 import { Robot } from "../robot/robot";
 import "./list.scss";
 export function List() {
-    const { robots, handleLoad, handleDelete, handleAdd, handleUpdate, handleFavourite } =
+    const { robots, handleLoad, handleDelete, handleAdd, handleFavourite } =
         useRobots();
 
     useEffect(() => {
@@ -20,7 +20,6 @@ export function List() {
                         <Robot
                             key={item.id}
                             item={item}
-                            handleUpdate={handleUpdate}
                             handleDelete={handleDelete}
                             handleFavourite={handleFavourite}
                         ></Robot>

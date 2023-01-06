@@ -3,7 +3,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Creator } from "./creator";
 
-describe('Given "Add" component in "Robots" page', () => {
+describe('Given "Creator" component', () => {
     const handleAdd = jest.fn();
 
     beforeEach(() => {
