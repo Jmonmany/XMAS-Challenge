@@ -17,11 +17,3 @@ export const mockValidRepoResponse = () => {
     (RobotsRepo.prototype.update as jest.Mock).mockResolvedValue(mockUpdateRobot);
     (RobotsRepo.prototype.delete as jest.Mock).mockResolvedValue(mockRobot1.id);
 };
-
-const error = new Error('Testing errors');
-export const mockNoValidRepoResponse = () => {
-    (RobotsRepo.prototype.load as jest.Mock).mockRejectedValue(error);
-    (RobotsRepo.prototype.create as jest.Mock).mockRejectedValue(error);
-    (RobotsRepo.prototype.update as jest.Mock).mockRejectedValue(error);
-    (RobotsRepo.prototype.delete as jest.Mock).mockRejectedValue(error);
-};
