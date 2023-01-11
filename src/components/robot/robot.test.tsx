@@ -142,10 +142,10 @@ describe("Given Robot component", () => {
                 expect(matcherEndurance).toBeInTheDocument();
                 expect(matcherCreator).toBeInTheDocument();
                 const formData = {
-                  name: "new test name",
-                  speed: "5",
-                  endurance: "10",
-                  creator: "Test creator name"
+                    name: "new test name",
+                    speed: "5",
+                    endurance: "10",
+                    creator: "Test creator name"
                 };
                 const inputElementsTxt = screen.getAllByRole("textbox");
                 const inputElementsNum = screen.getAllByRole("spinbutton");
@@ -159,7 +159,7 @@ describe("Given Robot component", () => {
                 waitFor(() => expect(matcherSpeed).toHaveValue(formData.speed));
                 waitFor(() => expect(matcherEndurance).toHaveValue(formData.endurance));
                 waitFor(() => expect(matcherCreator).toHaveValue(formData.creator));
-              });
+                });
         });
     });
 });
