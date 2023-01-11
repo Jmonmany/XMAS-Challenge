@@ -3,7 +3,6 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from "@testing-library/user-event";
 import { Edit } from './edit'
 import { ROBOT } from '../../features/data/mock.robot';
-
 describe('Given Robot component', () => {
     const onRobotUpdated = jest.fn()
     const robot = ROBOT
@@ -55,7 +54,17 @@ describe('Given Robot component', () => {
         test("Then form could be used for send the function received in props", () => {
             expect(elementButton).toBeInTheDocument()
             userEvent.click(elementButton)
-            waitFor(() => expect(onRobotUpdated).toHaveBeenCalled());
+            waitFor(() => expect(onRobotUpdated).toHaveBeenCalledWith({
+                id: robot.id,
+                name: mockRobotName,
+                speed: Number(mockSpeed),
+                endurance: Number(mockEndurance),
+                creationUser: mockCreator,
+            }));
+            waitFor(() => expect(inputElementsTxt[0]).not.toBeInTheDocument());
+            waitFor(() => expect(inputElementsTxt[1]).not.toBeInTheDocument());
+            waitFor(() => expect(inputElementsNum[0]).not.toBeInTheDocument());
+            waitFor(() => expect(inputElementsNum[1]).not.toBeInTheDocument());
         });
     });
 })

@@ -22,7 +22,8 @@ export function Edit({robot, onRobotUpdated}: {robot: RobotModel, onRobotUpdated
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault()
-        handleUpdate(formData).then(() => onRobotUpdated(formData));
+        handleUpdate(formData)
+        onRobotUpdated(formData);
     };
     
     
