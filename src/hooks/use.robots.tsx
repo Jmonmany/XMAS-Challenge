@@ -27,13 +27,12 @@ export function useRobots(): UseRobots {
     };
 
     const handleUpdate = async (robot: Partial<RobotModel>) => {
+        const updatedRobot = await repo.update(robot); 
         setRobots(
             robots.map((item) =>
-                item.id === robot.id ? { ...item, ...robot } : item
+                item.id === updatedRobot.id ? updatedRobot : item
             )
         );
-        await repo.update(robot);
-
         /**  return could be used for knowing that the robot was updated or not.
         return await repo.update(robot);
         */
