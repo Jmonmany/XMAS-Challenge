@@ -4,11 +4,6 @@ import { MenuItems } from '../../types/menu';
 
 export function Menu({ items }: { items: MenuItems }) {
     const [loading, setLoading] = useState(false);
-  
-    useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 1000);
-        return () => clearTimeout(timer);
-    }, [loading]);
 
     const [isOpen, setIsOpen] = useState(true);
 

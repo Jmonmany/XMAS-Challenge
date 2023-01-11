@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/await-async-utils */
 /* eslint-disable jest/no-conditional-expect */
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { RobotClass } from "../../features/models/robot.model";
 import userEvent from "@testing-library/user-event";
 import { Robot } from "./robot";
@@ -21,6 +21,7 @@ describe("Given Robot component", () => {
     );
     const handleDelete = jest.fn();
     const handleFavourite = jest.fn();
+    
     describe("When it has been render", () => {
         test("Then buttons should be in the screen", () => {
             render(
@@ -95,7 +96,6 @@ describe("Given Robot component", () => {
                     name: "Close",
                 })
                 expect(modalClosebtn).toBeVisible();
-    
             })
             test("Then Close button should close the Model", () => {
                 render(
@@ -105,16 +105,63 @@ describe("Given Robot component", () => {
                         handleFavourite={handleFavourite}
                     ></Robot>
                 );
+                
                 const modalShowbtn = screen.getByRole("button", {
                     name: "edit",
                 })
                 userEvent.click(modalShowbtn);
+                const inputElementsTxt = screen.getAllByRole("textbox");
                 const modalClosebtn = screen.getByRole("button", {
                     name: "Close",
                 })
-                userEvent.click(modalClosebtn); 
-                expect(modalClosebtn).not.toBeInTheDocument();    
+                expect(inputElementsTxt[0]).toBeVisible()
+                expect(inputElementsTxt[1]).toBeVisible()
+                userEvent.click(modalClosebtn);
+                expect(inputElementsTxt[0]).not.toBeVisible()
+                expect(inputElementsTxt[1]).not.toBeVisible() 
+                expect(modalClosebtn).not.toBeInTheDocument();
             })
+            test("handleRobotUpdated updates the state of the component and calls handleClose", () => {
+                render(
+                    <Robot
+                        item={mockRobot}
+                        handleDelete={handleDelete}
+                        handleFavourite={handleFavourite}
+                    ></Robot>
+                );
+                const matcherName = screen.getByText(mockRobotName)
+                const matcherSpeed = screen.getByText(mockSpeed)
+                const matcherEndurance = screen.getByText(mockEndurance)
+                const matcherCreator = screen.getByText(mockCreator)
+                const btnShow = screen.getByRole("button", {name: "edit"});
+                userEvent.click(btnShow);
+                const btnModalEdit = screen.getByRole("button", {name: "Edit"});
+                expect(btnModalEdit).toBeVisible()
+                expect(matcherName).toBeInTheDocument();
+                expect(matcherSpeed).toBeInTheDocument();
+                expect(matcherEndurance).toBeInTheDocument();
+                expect(matcherCreator).toBeInTheDocument();
+                const formData = {
+                  name: "new test name",
+                  speed: "5",
+                  endurance: "10",
+                  creator: "Test creator name"
+                };
+                const inputElementsTxt = screen.getAllByRole("textbox");
+                const inputElementsNum = screen.getAllByRole("spinbutton");
+                userEvent.type(inputElementsTxt[0], formData.name);
+                userEvent.type(inputElementsTxt[1], formData.creator);
+                userEvent.type(inputElementsNum[0], formData.speed);
+                userEvent.type(inputElementsNum[1], formData.endurance);
+                userEvent.click(btnModalEdit)
+                waitFor(() => expect(btnModalEdit).not.toBeVisible());
+                waitFor(() => expect(matcherName).toHaveValue(formData.name));
+                waitFor(() => expect(matcherSpeed).toHaveValue(formData.speed));
+                waitFor(() => expect(matcherEndurance).toHaveValue(formData.endurance));
+                waitFor(() => expect(matcherCreator).toHaveValue(formData.creator));
+              });
         });
     });
 });
+
+

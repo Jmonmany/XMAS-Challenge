@@ -56,6 +56,10 @@ describe('Given Robot component', () => {
             expect(elementButton).toBeInTheDocument()
             userEvent.click(elementButton)
             waitFor(() => expect(onRobotUpdated).toHaveBeenCalled());
+            waitFor(() => expect(inputElementsTxt[0]).not.toBeInTheDocument());
+            waitFor(() => expect(inputElementsTxt[1]).not.toBeInTheDocument());
+            waitFor(() => expect(inputElementsNum[0]).not.toBeInTheDocument());
+            waitFor(() => expect(inputElementsNum[1]).not.toBeInTheDocument());
         });
     });
 })
